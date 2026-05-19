@@ -1,0 +1,36 @@
+@WEBAPI_CRUD_HostAddress = http://localhost:5039
+@token = paste-jwt-token-here
+
+POST {{WEBAPI_CRUD_HostAddress}}/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "admin@example.com",
+  "password": "Admin@123"
+}
+
+###
+
+GET {{WEBAPI_CRUD_HostAddress}}/api/employees
+Authorization: Bearer {{token}}
+Accept: application/json
+
+###
+
+POST {{WEBAPI_CRUD_HostAddress}}/api/auth/logout
+Authorization: Bearer {{token}}
+
+###
+
+POST {{WEBAPI_CRUD_HostAddress}}/api/employees
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "firstName": "Asha",
+  "lastName": "Mehta",
+  "email": "asha.mehta@example.com",
+  "department": "Finance",
+  "salary": 68000,
+  "joiningDate": "2025-02-10T00:00:00Z"
+}
